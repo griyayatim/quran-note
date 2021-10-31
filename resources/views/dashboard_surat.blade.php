@@ -2,7 +2,7 @@
 @section('nav-menu')
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        [{{$surahs['number']}}] QS. [{{$surahs['name']['transliteration']['id']}} ([{{$surahs['name']['short']}})
+        [{{$surahs['number']}}] QS. {{$surahs['name']['transliteration']['id']}} ({{$surahs['name']['short']}})
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         @foreach ($list_surahs as $surah)
