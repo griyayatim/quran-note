@@ -17,6 +17,22 @@
 @endsection
 @section('content')
 <div class="container mt-3">
+    <div class="row mb-3">
+        @if ($surahs['number'] != 1)
+            <div class="col">
+                <a class="btn btn-secondary" href="{{route('surat', [$surahs['number'] - 1, 0])}}">
+                    Sebelumnya
+                </a>
+            </div>
+        @endif
+        @if ($surahs['number'] != count($list_surahs))
+            <div class="col">
+                <a class="btn btn-primary float-right" href="{{route('surat', [$surahs['number'] + 1, 0])}}">
+                    Selanjutnya
+                </a>
+            </div>
+        @endif
+    </div>
     <div class="card mb-3">
         <div class="card-header text-white bg-success text-center">{{ $surahs['name']['long'] }}</div>
         <div class="card-body text-center">
