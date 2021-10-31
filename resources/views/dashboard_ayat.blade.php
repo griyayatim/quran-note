@@ -1,4 +1,43 @@
 @extends('layouts.app')
+@section('nav-menu')
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        [{{$verses['surah']['number']}}] QS. {{$verses['surah']['name']['transliteration']['id']}} ({{$verses['surah']['name']['short']}})
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        @foreach ($list_surahs as $surah)
+            @if ($surah['number'] != $verses['surah']['number'])
+                <a href="{{route('surat', [$surah['number'], 0])}}" class="dropdown-item">
+                    [{{$surah['number']}}] QS. {{$surah['name']['transliteration']['id']}} ({{$surah['name']['short']}})
+                </a>
+            @endif
+        @endforeach
+    </div>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{-- [{{$surahs['number']}}] QS. [{{$surahs['name']['transliteration']['id']}} ([{{$surahs['name']['short']}}) --}}
+        Ayat {{$verses['number']['inSurah']}}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        @for ($i = 1; $i <= $verses['surah']['numberOfVerses']; $i++)
+        @if ($i != $verses['number']['inSurah'])
+        <a href="{{route('surat', [$verses['surah']['number'],$i])}}" class="dropdown-item">
+            Ayat {{$i}}
+        </a>
+        @endif
+       
+        @endfor
+        @foreach ($list_surahs as $surah)
+            @if ($surah['number'] != $verses['number'])
+                <a href="{{route('surat', [$surah['number'], 0])}}" class="dropdown-item">
+                    [{{$surah['number']}}] QS. {{$surah['name']['transliteration']['id']}} ({{$surah['name']['short']}})
+                </a>
+            @endif
+        @endforeach
+    </div>
+</li>
+@endsection
 @section('content')
 <div class="container mt-3">
     <div class="text-center">
