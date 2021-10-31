@@ -1,4 +1,20 @@
 @extends('layouts.app')
+@section('nav-menu')
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        [{{$surahs['number']}}] QS. [{{$surahs['name']['transliteration']['id']}} ([{{$surahs['name']['short']}})
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        @foreach ($list_surahs as $surah)
+            @if ($surah['number'] != $surahs['number'])
+                <a href="{{route('surat', [$surah['number'], 0])}}" class="dropdown-item">
+                    [{{$surah['number']}}] QS. {{$surah['name']['transliteration']['id']}} ({{$surah['name']['short']}})
+                </a>
+            @endif
+        @endforeach
+    </div>
+</li>
+@endsection
 @section('content')
 <div class="container mt-3">
     <div class="card mb-3">
