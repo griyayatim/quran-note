@@ -2,45 +2,44 @@
 @section('nav-menu')
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        [{{$verses['surah']['number']}}] QS. {{$verses['surah']['name']['transliteration']['id']}} ({{$verses['surah']['name']['short']}})
+        {{-- [{{$verses['surah']['number']}}] QS. {{$verses['surah']['name']['transliteration']['id']}} ({{$verses['surah']['name']['short']}}) --}}
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        @foreach ($list_surahs as $surah)
+        {{-- @foreach ($list_surahs as $surah)
             @if ($surah['number'] != $verses['surah']['number'])
                 <a href="{{route('surat', [$surah['number'], 0])}}" class="dropdown-item">
                     [{{$surah['number']}}] QS. {{$surah['name']['transliteration']['id']}} ({{$surah['name']['short']}})
                 </a>
             @endif
-        @endforeach
+        @endforeach --}}
     </div>
 </li>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{-- [{{$surahs['number']}}] QS. [{{$surahs['name']['transliteration']['id']}} ([{{$surahs['name']['short']}}) --}}
-        Ayat {{$verses['number']['inSurah']}}
+        {{-- Ayat {{$verses['number']['inSurah']}} --}}
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        @for ($i = 1; $i <= $verses['surah']['numberOfVerses']; $i++)
+        {{-- @for ($i = 1; $i <= $verses['surah']['numberOfVerses']; $i++)
         @if ($i != $verses['number']['inSurah'])
         <a href="{{route('surat', [$verses['surah']['number'],$i])}}" class="dropdown-item">
             Ayat {{$i}}
         </a>
         @endif
 
-        @endfor
-        @foreach ($list_surahs as $surah)
-            @if ($surah['number'] != $verses['number'])
-                <a href="{{route('surat', [$surah['number'], 0])}}" class="dropdown-item">
-                    [{{$surah['number']}}] QS. {{$surah['name']['transliteration']['id']}} ({{$surah['name']['short']}})
+        @endfor --}}
+        {{-- @foreach ($list_surahs as $surah)
+            @if ($surah['id'] != $verses['id'])
+                <a href="{{route('surat', [$surah['id'], 0])}}" class="dropdown-item">
+                    [{{$surah['id']}}] QS. {{$surahs['name_simple']}} ({{$surahs['translated_name']['name']}})
                 </a>
             @endif
-        @endforeach
+        @endforeach --}}
     </div>
 </li>
 @endsection
 @section('content')
 <div class="container mt-3">
-    <div class="row mb-3">
+    {{-- <div class="row mb-3">
         @if ($verses['number']['inQuran'] > 1)
             <div class="col">
                 <a class="btn btn-secondary" href="{{route('surat', [$verses['surah']['number'], $verses['number']['inSurah'] - 1])}}">
@@ -63,27 +62,27 @@
                 </a>
             </div>
         @endif
-    </div>
+    </div> --}}
     <div class="card mb-3">
-        <div class="card-header text-white bg-success text-center">QS. {{ $verses['surah']['name']['transliteration']['id'] }} [{{ $verses['surah']['number'] }}] ayat {{ $verses['number']['inSurah'] }}</div>
+        {{-- <div class="card-header text-white bg-success text-center">QS. {{ $verses['surah']['name']['transliteration']['id'] }} [{{ $verses['surah']['number'] }}] ayat {{ $verses['number']['inSurah'] }}</div>
         <div class="card-body text-center">
             <h5 class="card-title">{{ $verses['text']['arab'] }}</h5>
             <p class="card-text">{{ $verses['translation']['id'] }}</p>
             <audio controls>
                 <source src="{{ $verses['audio']['primary'] }}" type="audio/mpeg">
             </audio>
-        </div>
+        </div> --}}
     </div>
     <div class="card mb-3">
-        <div class="card-header text-white bg-success text-center">Tafsir</div>
+        {{-- <div class="card-header text-white bg-success text-center">Tafsir</div>
         <div class="card-body text-center">
             <h5 class="card-title">{{ $verses['text']['arab'] }}</h5>
             <p class="card-text">{{ $verses['tafsir']['id']['short'] }}</p>
             <p class="card-text">{{ $verses['tafsir']['id']['long'] }}</p>
-        </div>
+        </div> --}}
     </div>
     <div class="text-center">
-        <a href="{{ route('surat', [$verses['surah']['number'], 0]) }}" class="btn btn-warning btn-lg mb-3"><< Kembali ke QS. {{ $verses['surah']['name']['transliteration']['id'] }}</a>
+        {{-- <a href="{{ route('surat', [$verses['surah']['number'], 0]) }}" class="btn btn-warning btn-lg mb-3"><< Kembali ke QS. {{ $verses['surah']['name']['transliteration']['id'] }}</a> --}}
     </div>
 </div>
 @endsection
