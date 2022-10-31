@@ -39,6 +39,10 @@
 @endsection
 @section('content')
 <div class="container mt-3">
+    Terjemah:
+        @foreach ($verses['words'] as $verse)
+            {{ $verse['translation']['text'] }}
+        @endforeach
     {{-- <div class="row mb-3">
         @if ($verses['number']['inQuran'] > 1)
             <div class="col">
