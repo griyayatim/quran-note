@@ -27,6 +27,6 @@ class RedirectIfAuthenticated
             }
         }
 
-        return $next($request)->with('toast_success', 'Berhasil Login!');
+        return $next($request);
     }
 }

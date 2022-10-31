@@ -16,16 +16,25 @@
 </li>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{-- [{{$surahs['number']}}] QS. [{{$surahs['name']['transliteration']['id']}} ([{{$surahs['name']['short']}}) --}}
         Ayat {{$verses['number']['inSurah']}}
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         @for ($i = 1; $i <= $verses['surah']['numberOfVerses']; $i++)
-            @if ($i != $verses['number']['inSurah'])
-                <a href="{{route('surat', [$verses['surah']['number'], $i])}}" class="dropdown-item">
-                    Ayat {{$i}}
+        @if ($i != $verses['number']['inSurah'])
+        <a href="{{route('surat', [$verses['surah']['number'],$i])}}" class="dropdown-item">
+            Ayat {{$i}}
+        </a>
+        @endif
+
+        @endfor
+        @foreach ($list_surahs as $surah)
+            @if ($surah['number'] != $verses['number'])
+                <a href="{{route('surat', [$surah['number'], 0])}}" class="dropdown-item">
+                    [{{$surah['number']}}] QS. {{$surah['name']['transliteration']['id']}} ({{$surah['name']['short']}})
                 </a>
             @endif
-        @endfor
+        @endforeach
     </div>
 </li>
 @endsection
