@@ -14,7 +14,9 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $surahs = json_encode(Http::get('https://api.quran.sutanlab.id/surah')->json('data'));
+        $surahs = json_encode(Http::get('https://api.quran.com/api/v4/chapters?language=id')->json("chapters"));
+        // echo(json_decode($surahs, true));
+        // dd($surahs);
         return view('dashboard', ['surahs' => json_decode($surahs, true)]);
     }
 

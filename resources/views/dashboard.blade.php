@@ -13,20 +13,20 @@
             @foreach ($surahs as $surah)
                 <tr>
                     <td>
-                        {{ $surah['number'] }}
+                        {{ $surah['id'] }}
                     </td>
                     <td>
-                        {{ $surah['name']['short'] }}
-                        {{ $surah['name']['transliteration']['id'] }}
+                        {{ $surah['name_arabic'] }}
+                        {{ $surah['name_simple'] }}
                     </td>
                     <td>
-                        {{ $surah['name']['translation']['id'] }}
+                        {{ $surah['translated_name']['name'] }}
                     </td>
                     <td>
-                        {{ $surah['numberOfVerses'] }} ayat
+                        {{ $surah['verses_count'] }} ayat
                     </td>
                     <td>
-                        <a href="{{ route('surat', [$surah['number'], 0]) }}">Detail</a>
+                        <a href="{{ route('surat', [$surah['id'], 0]) }}">Detail</a>
                     </td>
                 </tr>
             @endforeach
