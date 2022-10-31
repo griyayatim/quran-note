@@ -26,7 +26,7 @@ class DashboardController extends Controller
             $surahs = json_encode(Http::get('https://api.quran.com/api/v4/chapters/1?language=id' . $surat)->json('chapter'));
             return view('dashboard_surat', ['surahs' => json_decode($surahs, true),'list_surahs'=> json_decode($list_surahs,true)]);
         } else {
-            $verses = json_encode(Http::get('https://api.quran.sutanlab.id/surah/' . $surat . '/' . $ayat)->json('data'));
+            $verses = json_encode(Http::get('https://api.quran.com/api/v4/verses/by_key/'.$surat.':'.$ayat.'?language=id&words=true/')->json('verse'));
             return view('dashboard_ayat', ['verses' => json_decode($verses, true), 'list_surahs'=> json_decode($list_surahs,true)]);
         }
     }
